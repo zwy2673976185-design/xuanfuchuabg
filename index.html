@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>悬浮窗插件</title>
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 动态内容容器 -->
+    <div id="dynamicContent"></div>
+    
+    <!-- 弹窗通知容器 -->
+    <div id="notificationPopup" class="notification-popup"></div>
+    
+    <!-- 悬浮按钮 -->
+    <button class="float-btn" id="floatBtn"></button>
+    
+    <!-- 悬浮窗口 -->
+    <div class="float-window" id="floatWindow">
+        <div class="window-header" id="windowHeader">
+            功能面板
+            <button class="modal-back" id="modalBack">返回</button>
+        </div>
+        <div class="func-buttons" id="funcButtons">
+            <button class="func-btn" id="btnMy">
+                <span>我的</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" class="btn-icon" alt="我的">
+            </button>
+            <button class="func-btn" id="btnNotice">
+                <span>公告更新</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913028.png" class="btn-icon" alt="公告更新">
+            </button>
+            <button class="func-btn" id="btnContact">
+                <span>联系作者</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" class="btn-icon" alt="联系作者">
+            </button>
+            <button class="func-btn" id="btnSetting">
+                <span>设置</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/126/126473.png" class="btn-icon" alt="设置">
+            </button>
+        </div>
+
+        <!-- 我的面板：登录/注册 + 自动登录 -->
+        <div class="content-panel" id="panelMy">
+            <div class="auth-container" id="authContainer">
+                <div class="auth-header">
+                    <!-- 通知容器已移除 -->
+                </div>
+                <div class="auth-content">
+                    <!-- 登录表单 -->
+                    <div class="auth-form active" id="login-form">
+                        <h3>登录账户</h3>
+                        <div class="form-group">
+                            <label for="login-username">用户名</label>
+                            <input type="text" id="login-username" placeholder="请输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">密码</label>
+                            <input type="password" id="login-password" placeholder="请输入密码">
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+                            <input type="checkbox" id="auto-login" style="width: auto;">
+                            <label for="auto-login" style="margin: 0; font-size: 12px;">自动登录</label>
+                        </div>
+                    </div>
+                    <!-- 注册表单 -->
+                    <div class="auth-form" id="register-form">
+                        <h3>注册账户</h3>
+                        <div class="form-group">
+                            <label for="register-username">用户名</label>
+                            <input type="text" id="register-username" placeholder="请输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">邮箱 (选填)</label>
+                            <input type="email" id="register-email" placeholder="请输入邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">密码</label>
+                            <input type="password" id="register-password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <!-- 登录成功后显示的用户信息 -->
+                    <div class="user-info" id="user-info">
+                        <div class="user-avatar">👤</div>
+                        <div class="user-name" id="user-name">用户名</div>
+                        <div class="user-email" id="user-email">user@example.com</div>
+                        <button class="logout-btn" id="logout-btn">退出登录</button>
+                    </div>
+                </div>
+                <div class="auth-footer">
+                    <button class="auth-btn" id="login-btn">登录</button>
+                    <button class="auth-btn" id="register-btn" style="display: none;">注册</button>
+                    <div class="auth-tabs" id="auth-tabs">
+                        <div class="auth-tab active" data-tab="login">登录</div>
+                        <div class="auth-tab" data-tab="register">注册</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公告面板 -->
+        <div class="content-panel" id="panelNotice">
+            <div style="text-align: center; padding: 20px; color: #666;">
+                <h3 style="margin-bottom: 10px;">📢 公告系统</h3>
+                <p style="font-size: 13px; margin-bottom: 15px;">系统运行正常</p>
+                <p style="font-size: 12px; color: #999;">悬浮窗核心功能已保留</p>
+            </div>
+        </div>
+        
+        <!-- 联系作者面板 -->
+        <div class="content-panel" id="panelContact">
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="margin-bottom: 10px;">📞 联系作者</h3>
+                <p style="font-size: 13px; margin-bottom: 10px;">如有问题或建议，请联系管理员</p>
+                <p style="font-size: 12px; color: #666; background: #f5f5f5; padding: 10px; border-radius: 5px;">
+                    可自定义添加联系方式
+                </p>
+            </div>
+        </div>
+        
+        <!-- 设置面板 -->
+        <div class="content-panel" id="panelSetting">
+            <div style="padding: 5px;">
+                <h3 style="margin-bottom: 15px; color: #2d3748;">系统设置</h3>
+                <p style="margin-bottom: 8px; font-size: 13px; color: #4a5568;">
+                    <strong>版本:</strong> v1.0.0
+                </p>
+                <p style="margin-bottom: 8px; font-size: 13px; color: #4a5568;">
+                    <strong>悬浮窗功能:</strong> 正常启用
+                </p>
+                <p style="margin-bottom: 8px; font-size: 13px; color: #4a5568;">
+                    <strong>拖拽功能:</strong> 已开启
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
+
