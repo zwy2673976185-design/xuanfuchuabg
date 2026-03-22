@@ -3,44 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>悬浮窗插件演示</title>
+    <title>悬浮窗插件完整版</title>
     
-    <!-- 引入悬浮窗插件样式 -->
-    <link rel="stylesheet" href="style.css">
+    <!-- 引入插件CSS -->
+    <link rel="stylesheet" href="floating-window.css">
     
     <style>
         /* 页面基础样式 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        body { 
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; 
+            line-height: 1.6; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 20px;
+            color: #333;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px;
         }
         
         .header {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
         }
         
         .header h1 {
+            color: #2563eb;
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            color: #666;
+            font-size: 1.1rem;
         }
         
         .content {
@@ -54,7 +52,7 @@
             background: white;
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .card h2 {
@@ -78,11 +76,19 @@
             border-bottom: none;
         }
         
+        .card li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
         .instructions {
-            background: rgba(255,255,255,0.9);
+            background: #f8fafc;
+            padding: 25px;
             border-radius: 12px;
-            padding: 30px;
             margin-top: 30px;
+            border: 2px dashed #2563eb;
         }
         
         .instructions h3 {
@@ -92,92 +98,52 @@
         }
         
         .step {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8fafc;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: #f0f9ff;
             border-radius: 8px;
             border-left: 4px solid #2563eb;
-        }
-        
-        .step-number {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        
-        .status {
-            text-align: center;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        
-        .loading {
-            background: #fef3c7;
-            color: #92400e;
-            border: 2px solid #f59e0b;
-        }
-        
-        .success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 2px solid #10b981;
-        }
-        
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 2px solid #ef4444;
         }
         
         .footer {
             text-align: center;
             margin-top: 40px;
             padding: 20px;
-            color: white;
-            font-size: 0.9rem;
-        }
-        
-        .footer a {
-            color: #93c5fd;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
+            color: #666;
+            border-top: 1px solid #e2e8f0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 悬浮窗插件演示</h1>
-            <p>一个功能完整的可拖拽悬浮窗插件</p>
-        </div>
-        
-        <div id="status-message" class="status loading">
-            正在初始化悬浮窗插件...
+            <h1>悬浮窗插件演示页面</h1>
+            <p>这是一个功能完整的悬浮窗插件，包含所有修复和改进</p>
         </div>
         
         <div class="content">
             <div class="card">
                 <h2>✨ 功能特性</h2>
                 <ul>
-                    <li>✅ 可拖拽悬浮按钮</li>
-                    <li>✅ 可拖拽悬浮窗口</li>
-                    <li>✅ 登录/注册系统</li>
-                    <li>✅ 弹窗通知系统</li>
-                    <li>✅ 自动登录记忆</li>
-                    <li>✅ 响应式设计</li>
-                    <li>✅ 移动端适配</li>
+                    <li>可拖拽悬浮按钮和窗口</li>
+                    <li>完整的登录/注册系统</li>
+                    <li>自动登录功能</li>
+                    <li>智能弹窗通知系统</li>
+                    <li>位置记忆（默认开启）</li>
+                    <li>响应式设计</li>
+                    <li>移动端适配</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>🔄 更新内容</h2>
+                <ul>
+                    <li>移除设置中的冗余选项</li>
+                    <li>位置记忆默认开启且不可关闭</li>
+                    <li>自动登录移到登录页面</li>
+                    <li>优化悬浮按钮图标</li>
+                    <li>改进弹窗通知系统（支持覆盖）</li>
+                    <li>修复所有已知问题</li>
                 </ul>
             </div>
             
@@ -185,145 +151,40 @@
                 <h2>🎯 测试指引</h2>
                 <ul>
                     <li>1. 点击右下角悬浮按钮</li>
-                    <li>2. 测试窗口打开/关闭</li>
-                    <li>3. 拖拽悬浮按钮/窗口</li>
-                    <li>4. 测试登录/注册功能</li>
-                    <li>5. 切换不同功能面板</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h2>⚙️ 技术信息</h2>
-                <ul>
-                    <li><strong>版本:</strong> v2.0.0</li>
-                    <li><strong>状态:</strong> <span id="plugin-status">等待初始化</span></li>
-                    <li><strong>位置记忆:</strong> 已启用</li>
-                    <li><strong>自动登录:</strong> 已启用</li>
-                    <li><strong>兼容性:</strong> 现代浏览器</li>
+                    <li>2. 测试登录/注册功能</li>
+                    <li>3. 测试弹窗通知覆盖</li>
+                    <li>4. 拖拽悬浮按钮和窗口</li>
+                    <li>5. 检查位置记忆功能</li>
                 </ul>
             </div>
         </div>
         
         <div class="instructions">
-            <h3>🔧 故障排除</h3>
-            
-            <div class="step">
-                <div class="step-number">1</div>
-                <div>
-                    <strong>如果悬浮窗口不出现：</strong><br>
-                    打开浏览器开发者工具 (F12)，查看控制台是否有错误信息。
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">2</div>
-                <div>
-                    <strong>如果不能拖拽：</strong><br>
-                    确保已正确加载所有JavaScript文件，没有控制台错误。
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">3</div>
-                <div>
-                    <strong>如果样式异常：</strong><br>
-                    检查CSS文件是否正确加载，路径是否正确。
-                </div>
-            </div>
+            <h3>🚀 插件使用方法</h3>
+            <div class="step">1. 将 floating-window.css 和 floating-window.js 文件放入您的项目</div>
+            <div class="step">2. 在HTML中引入这两个文件</div>
+            <div class="step">3. 插件会自动初始化，右下角会出现悬浮按钮</div>
+            <div class="step">4. 所有功能已就绪，无需额外配置</div>
         </div>
         
         <div class="footer">
-            <p>悬浮窗插件 © 2026 | GitHub: 
-                <a href="https://github.com/zwy2673976185-design/xuanfuchuabg" target="_blank">
-                    zwy2673976185-design/xuanfuchuabg
-                </a>
-            </p>
-            <p id="page-info">页面加载时间: <span id="load-time">计算中...</span></p>
+            <p>悬浮窗插件 v2.1.0 | 包含所有修复和改进</p>
         </div>
     </div>
     
     <!-- 悬浮窗容器 -->
     <div id="floating-window-container"></div>
     
-    <!-- 引入修复后的JavaScript文件 -->
-    <script src="script.js"></script>
+    <!-- 引入插件JS -->
+    <script src="floating-window.js"></script>
     
     <script>
-        // 页面加载时间计算
-        window.addEventListener('load', function() {
-            const loadTime = performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart;
-            document.getElementById('load-time').textContent = loadTime + 'ms';
-        });
-        
-        // 插件初始化状态监控
-        let initAttempts = 0;
-        const maxAttempts = 10;
-        
-        function checkPluginInitialized() {
-            initAttempts++;
-            
-            // 检查悬浮按钮是否存在
-            const floatBtn = document.getElementById('floatBtn');
-            const floatWindow = document.getElementById('floatWindow');
-            
-            if (floatBtn && floatWindow) {
-                // 更新状态显示
-                document.getElementById('status-message').className = 'status success';
-                document.getElementById('status-message').innerHTML = '✅ 悬浮窗插件初始化成功！';
-                document.getElementById('plugin-status').textContent = '已就绪';
-                
-                // 添加点击测试
-                floatBtn.addEventListener('click', function() {
-                    console.log('悬浮按钮被点击');
-                });
-                
-                // 显示调试信息
-                console.log('✅ 悬浮窗插件已成功初始化');
-                console.log('📌 悬浮按钮:', floatBtn);
-                console.log('📌 悬浮窗口:', floatWindow);
-                
-                return true;
-            } else if (initAttempts < maxAttempts) {
-                // 继续检查
-                setTimeout(checkPluginInitialized, 500);
-                return false;
-            } else {
-                // 初始化失败
-                document.getElementById('status-message').className = 'status error';
-                document.getElementById('status-message').innerHTML = '❌ 悬浮窗插件初始化失败，请检查控制台错误';
-                document.getElementById('plugin-status').textContent = '初始化失败';
-                console.error('❌ 悬浮窗插件初始化失败：元素未找到');
-                return false;
-            }
-        }
-        
-        // 初始化插件
+        // 自动初始化插件
         if (typeof initFloatingWindow === 'function') {
-            console.log('🚀 开始初始化悬浮窗插件...');
-            try {
+            document.addEventListener('DOMContentLoaded', function() {
                 initFloatingWindow();
-                // 开始检查初始化状态
-                setTimeout(checkPluginInitialized, 1000);
-            } catch (error) {
-                console.error('❌ 初始化错误:', error);
-                document.getElementById('status-message').className = 'status error';
-                document.getElementById('status-message').innerHTML = '❌ 初始化错误: ' + error.message;
-            }
-        } else {
-            console.error('❌ initFloatingWindow 函数未定义');
-            document.getElementById('status-message').className = 'status error';
-            document.getElementById('status-message').innerHTML = '❌ 脚本文件未正确加载，initFloatingWindow 函数未定义';
+            });
         }
-        
-        // 监听控制台错误
-        window.addEventListener('error', function(e) {
-            console.error('🚨 页面错误:', e.error);
-            const statusElement = document.getElementById('status-message');
-            if (statusElement.className.includes('loading')) {
-                statusElement.className = 'status error';
-                statusElement.innerHTML = '❌ 页面脚本错误: ' + e.message;
-            }
-        });
     </script>
 </body>
 </html>
