@@ -1,0 +1,76 @@
+// React Native 插件示例
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+
+// 插件配置
+export const config = {
+  name: '演示插件',
+  version: '1.0.0',
+  author: '您的名字',
+  description: '这是一个演示插件，可以从 GitHub 动态加载',
+  dependencies: [],
+};
+
+// 插件样式
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#4fc3f7',
+    padding: 20,
+    borderRadius: 10,
+    margin: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 10,
+  },
+  button: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#4fc3f7',
+    fontWeight: '600',
+  },
+});
+
+// 插件主组件
+const DemoPlugin = ({ onAction }) => {
+  const [count, setCount] = React.useState(0);
+
+  const handlePress = () => {
+    setCount(count + 1);
+    if (onAction) onAction('按钮被点击', { count: count + 1 });
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>🎯 {config.name}</Text>
+      <Text style={{ color: 'white' }}>版本: {config.version}</Text>
+      <Text style={{ color: 'white', marginTop: 10 }}>
+        这是一个动态加载的 React Native 插件！
+      </Text>
+      
+      <View style={{ marginVertical: 15 }}>
+        <Text style={{ color: 'white', fontSize: 16 }}>
+          点击次数: {count}
+        </Text>
+      </View>
+
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>点击我 (+1)</Text>
+      </TouchableOpacity>
+
+      <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 12, marginTop: 15 }}>
+        此插件从 GitHub 动态加载，修改后刷新即可更新
+      </Text>
+    </View>
+  );
+};
+
+export default DemoPlugin;
+
